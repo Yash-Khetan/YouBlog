@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit</title>
+    <link rel="stylesheet" href="/styles/style.css">
+</head>
+<body>
+     
+
+   <div class="container">
+        <h2>Edit Blog</h2>
+         <form action="/update/<%= locals.blog.index %>" method="POST">
+        <label for="title"> New Title:</label>
+        <input type="text" name="title">
+        <label for="subtitle">New Subtitle</label>
+        <input type="text" name="subtitle">
+        <label for="content">New Content:</label>
+        <textarea name="content" id=""></textarea>
+        <input type="submit" value="UPDATE">
+    </form>
+   </div>
+    
+</body>
+</html>

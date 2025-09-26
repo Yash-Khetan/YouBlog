@@ -1,0 +1,47 @@
+<!-- This page is the user's personalized dashboard -->
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Dashboard</title>
+<link rel="stylesheet" href="/styles/style.css">
+</head>
+<body>
+
+<!-- HEADER WITH WELCOME AND LOGOUT BUTTON (FIXED: Sign Out Visibility) -->
+
+<div class="header" style="display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; border-bottom: 1px solid #ccc;">
+<!-- The 'user' object is passed from index.js -->
+<h1>Welcome, <%= locals.user.username || locals.user.email %>!</h1>
+<a href="/logout" style="color: #d9534f; text-decoration: none; padding: 5px 10px; border: 1px solid #d9534f; border-radius: 4px;">Logout</a>
+</div>
+
+<a href="/create" style="margin: 20px; display: inline-block; padding: 10px 15px; background-color: #5cb85c; color: white; text-decoration: none; border-radius: 4px;">Create a New Blog</a>
+
+<div class="container">
+<% if (locals.blogs && locals.blogs.length > 0) { %>
+<% locals.blogs.forEach((blog) => { %>
+<!-- FIX: All links now use blog.id from the PostgreSQL database -->
+<h1><%= blog.title %></h1>
+<h3><%= blog.subtitle %></h3>
+<a href="/edit/<%= blog.id %>">Edit</a>
+<a href="/view/<%= blog.id %>">View</a>
+<!-- FIX: Delete link now points to the correct ID -->
+<a href="/delete/<%= blog.id %>">Delete</a>
+<hr>
+<% }) %>
+<% } else { %>
+<p>No blogs available. Please create a new blog.</p>
+<% } %>
+
+</div>
+
+
+
+
+
+</body>
+</html>
