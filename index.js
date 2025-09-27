@@ -50,7 +50,7 @@ passport.use("google", new GoogleStrategy({
     clientID: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     // CRITICAL: Must match the redirect URI in Google Cloud Console
-    callbackURL: process.env.HOST_URL + "/auth/google/secrets", 
+    callbackURL: HOST_URL + "/auth/google/secrets", 
     userProfileURL: "https://www.googleapis.com/oauth2/v3/userinfo",
 },
 async (accessToken, refreshToken, profile, cb) => {
@@ -253,6 +253,9 @@ app.get("/delete/:id", isAuthenticated, async (req, res) => {
 });
 
 
-app.listen(port, () => {
-  console.log(`Server running on port ${port}.`);
-});
+// app.listen(port, () => {
+//   console.log(`Server running on port ${port}.`);
+// });
+
+// for deployment using export default app
+export default app;
